@@ -42,13 +42,13 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
-// const deleteNote = (id) =>
-//   fetch(`/api/notes/${id}`, {
-//     method: 'DELETE',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   });
+const deleteNote = (id) =>
+  fetch(`/api/notes/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
 const renderActiveNote = () => {
   hide(saveNoteBtn);
@@ -145,7 +145,7 @@ const handleRenderSaveBtn = () => {
   }
 };
 
-// Render the list of note titles
+
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
   if (window.location.pathname === '/notes') {
@@ -199,7 +199,7 @@ const renderNoteList = async (notes) => {
   }
 };
 
-// Gets notes from the db and renders them to the sidebar
+
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
 if (window.location.pathname === '/notes') {
@@ -208,9 +208,7 @@ if (window.location.pathname === '/notes') {
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
   noteText.addEventListener('keyup', handleRenderSaveBtn);
 }
-// index.js
 
-// Attach an event listener to call fetchNotes when the page loads
 window.addEventListener('load', fetchNotes);
 
 getAndRenderNotes();
