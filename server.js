@@ -14,9 +14,6 @@ app.get('/notes', (req, res) => {
   res.sendFile(__dirname + '/public/notes.html');
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
-});
 
 // API Routes
 app.get('/api/notes', (req, res) => {
@@ -74,7 +71,10 @@ app.get('/api/notes', (req, res) => {
       }
     });
   });
-  
+
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+  });
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
